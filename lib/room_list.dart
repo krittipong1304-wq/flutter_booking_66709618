@@ -267,8 +267,11 @@ trailing: Wrap(
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => BookingPage(room: room),
-          ),
+            builder: (_) => BookingPage(
+              room : room,
+              name : widget.name
+              ),
+            ),
         );
 
       },
