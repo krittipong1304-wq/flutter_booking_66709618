@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2026 at 11:08 AM
+-- Generation Time: Mar 24, 2026 at 09:58 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `rooms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `firstname`, `lastname`, `username`, `password`) VALUES
+(1, 'krittipong', 'mankaew', 'admin', '1212'),
+(2, 'Mu', 'ping', 'muping', '12');
 
 -- --------------------------------------------------------
 
@@ -41,7 +63,8 @@ CREATE TABLE `bookings` (
 --
 
 INSERT INTO `bookings` (`id`, `room_id`, `user_name`, `booking_date`, `start_time`, `end_time`) VALUES
-(1, 1, 'dwad', '2026-03-17', '01:36:00', '03:36:00');
+(1, 1, 'dwad', '2026-03-17', '01:36:00', '03:36:00'),
+(2, 1, 'กฤติพงศ์', '2026-03-23', '21:41:00', '22:41:00');
 
 -- --------------------------------------------------------
 
@@ -96,6 +119,12 @@ INSERT INTO `rooms` (`id`, `room_name`, `capacity`, `location`, `image`) VALUES
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `bookings`
 --
 ALTER TABLE `bookings`
@@ -113,10 +142,16 @@ ALTER TABLE `rooms`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `rooms`

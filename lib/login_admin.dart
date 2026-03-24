@@ -2,22 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_booking/room_list.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'room_crud.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class LoginAdmin extends StatefulWidget {
+  const LoginAdmin({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginAdmin> createState() => _LoginAdminState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginAdminState extends State<LoginAdmin> {
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
 
   bool isPasswordHidden = true;
 
   Future login() async {
-    var url = Uri.parse("http://localhost/flutter_booking_66709618/php_api/login.php");
+    var url = Uri.parse("http://localhost/flutter_booking_66709618/php_api/login_admin.php");
 
     var response = await http.post(
       url,
@@ -29,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
     if (data["status"] == "success") {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => RoomList(name: data["name"])), //เพิ่มการส่งค่า name ไปยัง HomePage
+        MaterialPageRoute(builder: (context) => roompage(name: data["name"])), //เพิ่มการส่งค่า name ไปยัง HomePage
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -44,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Login System")),
+      appBar: AppBar(title: const Text("Login Admin")),
 
       body: Padding(
         padding: const EdgeInsets.all(20),
